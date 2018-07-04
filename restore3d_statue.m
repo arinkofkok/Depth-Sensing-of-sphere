@@ -59,8 +59,7 @@ li =zeros(sph,1);
 sn_es=zeros(N_ROW,N_COL,3);%推定した法線ベクトル
 
  for i=1:N_ROW
-     for j=1:N_COL
-         
+     for j=1:N_COL     
          s=zeros(sph,3);
          for ii=1:sph
             for k=1:3
@@ -79,15 +78,11 @@ sn_es=zeros(N_ROW,N_COL,3);%推定した法線ベクトル
                   for k=1:3
                      s(ii,k)= 0;
                   end
-               end
-               
-         end
-         
+               end          
+         end     
          for ii=1:sph
              li(ii,1)=img(i,j,ii);
-         end
-         
-         
+         end 
          sq = pinv(s);
          b=sq*li;%法線ベクトル計算
          if any(b)%単位ベクトルに
@@ -96,12 +91,8 @@ sn_es=zeros(N_ROW,N_COL,3);%推定した法線ベクトル
          for k=1:3
             sn_es(i,j,k)= b(k,1);
          end
-         
-         %%
-
      end
  end
-
  %% colormapを*.ppmに出力
    fpc = fopen('colorsphere.ppm','w');
    f0=fopen('sn_statue.txt','w');
